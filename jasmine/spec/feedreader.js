@@ -90,6 +90,17 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         beforeEach(function(done) {
+            loadFeed(0,function() {
+                done();
+            });
+         });
+
+         it('should have at least a single entry in entry within the feed container', function(done) {
+            loadFeed(0);
+            expect($('.entry-link')).toBeInDOM();
+            done();
+         });
 
     });
 
