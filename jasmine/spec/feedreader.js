@@ -90,6 +90,14 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+         // The following test was used to check that async call is being performed and that
+         // the test would fail becuase it was not accounted for.
+         // it('should fail because not accounting for asynchrounous call', function() {
+         //    loadFeed(0);
+         //    expect($('.entry-link')).not.toBeInDOM();
+         // });
+
          beforeEach(function(done) {
             loadFeed(0,function() {
                 done();
@@ -101,6 +109,7 @@ $(function() {
             expect($('.entry-link')).toBeInDOM();
             done();
          });
+
 
     });
 
