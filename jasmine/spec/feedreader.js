@@ -92,7 +92,7 @@ $(function() {
          */
 
          // The following test was used to check that async call is being performed and that
-         // the test would fail becuase it was not accounted for.
+         // the test would fail because it was not accounted for.
          // it('should fail because not accounting for asynchrounous call', function() {
          //    loadFeed(0);
          //    expect($('.entry-link')).not.toBeInDOM();
@@ -113,10 +113,71 @@ $(function() {
 
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
-
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+         var originalTimeout, feedList, firstFeed, secondFeed;
+         var feed0 = 0;
+         var feed1 = 1;
+         var feed2 = 2;
+         var feed3 = 3;
+
+         beforeAll(function() {
+            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
+            loadFeed(feed0, function() {
+                feedList = $('.feed').find('.entry-link');
+                firstFeed = feedList[0].innerText;
+                console.log(firstFeed);
+                expect(firstFeed).toBeDefined();
+                done();
+            });
+         });
+
+         // beforeEach(function(done) {
+
+         // });
+
+         it('ensures that the content changes when a new feed is loaded', function(done) {
+            loadFeed(feed1, function() {
+                feedList = $('.feed').find('.entry-link');
+                secondFeed = feedList[0].innerText;
+                console.log(secondFeed);
+                expect(secondFeed).toBeDefined();
+                expect(firstFeed).not.toEqual(secondFeed);
+                done();
+            });
+         });
+
+        it('ensures that the content changes when a new feed is loaded', function(done) {
+                loadFeed(feed2, function() {
+                feedList = $('.feed').find('.entry-link');
+                secondFeed = feedList[0].innerText;
+                console.log(secondFeed);
+                expect(secondFeed).toBeDefined();
+                expect(firstFeed).not.toEqual(secondFeed);
+                done();
+            });
+         });
+
+        it('ensures that the content changes when a new feed is loaded', function(done) {
+                loadFeed(feed3, function() {
+                feedList = $('.feed').find('.entry-link');
+                secondFeed = feedList[0].innerText;
+                console.log(secondFeed);
+                expect(secondFeed).toBeDefined();
+                expect(firstFeed).not.toEqual(secondFeed);
+                done();
+            });
+         });
+
+        afterAll(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+        });
+     });
 }());
