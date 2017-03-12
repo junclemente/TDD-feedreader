@@ -132,39 +132,31 @@ $(function() {
         });
         beforeEach(function(done) {
             loadFeed(FEED0, function() {
-                feedList = $('.feed').find('.entry-link');
-                firstFeed = feedList[0].innerText;
-                expect(firstFeed).toBeDefined();
+                firstFeed = $('.feed').html();
                 done();
             });
         });
         it('ensures that the content changes when a new feed is loaded', function(done) {
             loadFeed(FEED1, function() {
-                feedList = $('.feed').find('.entry-link');
-                secondFeed = feedList[0].innerText;
-                expect(secondFeed).toBeDefined();
+                secondFeed = $('.feed').html();
                 expect(firstFeed).not.toEqual(secondFeed);
                 done();
             });
         });
-        // it('ensures that the content changes when a new feed is loaded', function(done) {
-        //     loadFeed(FEED2, function() {
-        //         feedList = $('.feed').find('.entry-link');
-        //         secondFeed = feedList[0].innerText;
-        //         expect(secondFeed).toBeDefined();
-        //         expect(firstFeed).not.toEqual(secondFeed);
-        //         done();
-        //     });
-        // });
-        // it('ensures that the content changes when a new feed is loaded', function(done) {
-        //     loadFeed(FEED3, function() {
-        //         feedList = $('.feed').find('.entry-link');
-        //         secondFeed = feedList[0].innerText;
-        //         expect(secondFeed).toBeDefined();
-        //         expect(firstFeed).not.toEqual(secondFeed);
-        //         done();
-        //     });
-        // });
+        it('ensures that the content changes when a new feed is loaded', function(done) {
+            loadFeed(FEED2, function() {
+                secondFeed = $('.feed').html();
+                expect(firstFeed).not.toEqual(secondFeed);
+                done();
+            });
+        });
+        it('ensures that the content changes when a new feed is loaded', function(done) {
+            loadFeed(FEED3, function() {
+                secondFeed = $('.feed').html();
+                expect(firstFeed).not.toEqual(secondFeed);
+                done();
+            });
+        });
         afterAll(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
