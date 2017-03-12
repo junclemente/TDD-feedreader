@@ -97,13 +97,10 @@ $(function() {
          * until after the loadFeed(0) has completed loading.
          */
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
-        it('should have at least a single entry in entry within the feed container', function(done) {
+        it('should have at least a single entry in entry within the feed container', function() {
             expect($('.entry-link')).toBeInDOM();
-            done();
         });
     });
     /* Write a new test suite named "New Feed Selection" */
