@@ -114,12 +114,13 @@ $(function() {
          *
          * The following test suite tests accounts for the asynchronous nature
          * of loadFeed().
-         * Initially, the first loadFeed() will be called and the text for the first
+         * The first loadFeed(0) will be called and the text for the first
          * entry will be stored at firstFeed.
-         * The second loadFeed() is called and it's first entry will be stored at secondFeed
+         * The second loadFeed(1) is called and it's first entry will be stored at secondFeed
          * and compared to the initial first entry. These should not be equal. Additionally,
          * to ensure that async is accounted for, it is expected that both firstFeed and secondFeed
          * are defined.
+         * Additional calls to loadFeed(2) and loadFeed(3) are tested as above.
          */
         var originalTimeout, feedList, firstFeed, secondFeed;
         var FEED0 = 0,
