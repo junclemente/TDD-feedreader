@@ -152,4 +152,25 @@ $(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
     });
+    /* NEW TEST SUITES */
+    describe('Clicking a link in the menu', function() {
+        /* TODO: Write a test that ensures when the menu is opened,
+         * when a menu item is clicked, the correct feed is loaded
+         * and that at least a single .entry element within
+         * the .feed container
+        */
+        xit('opens the correct feed');
+
+        /* TODO: Write a test that ensures the menu will automatically close
+         * after a menu item has been selected
+         */
+        it('will automatically close the Menu window');
+
+        /* TODO: Write a test that ensures clicking on menu links can
+         * only be done when menu is visible
+         */
+         it('is only possible when menu is visible', function() {
+            pending();
+         });
+    });
 }());
