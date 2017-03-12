@@ -160,17 +160,42 @@ $(function() {
          * the .feed container
         */
         xit('opens the correct feed');
-
         /* TODO: Write a test that ensures the menu will automatically close
          * after a menu item has been selected
          */
         it('will automatically close the Menu window');
-
         /* TODO: Write a test that ensures clicking on menu links can
          * only be done when menu is visible
          */
          it('is only possible when menu is visible', function() {
             pending();
          });
+    describe('Day / Night mode', function() {
+        /* TODO: Create a day / night mode so that the website checks the local time and determines the
+         * day or night mode background and text colors based on the local time.
+         */
+        it('will have a light colored background with contrasting text between 6am - 6pm', function() {
+            pending();
+        });
+        it('will have a dark colored background with contrasting text between 6pm - 6am', function() {
+            pending();
+        });
+    });
+    describe('Day/Night button', function() {
+        /* TODO: Create a button in the header bar that, when clicked
+         * changes the color scheme to have a dark background with
+         * light colored text.
+         */
+         it('changes the background color and text color when clicked', function() {
+            pending();
+         });
+         /* TODO: Create a test that makes sure that the color scheme changes when clicked,
+          * and then changes back to the original color when it is clicked again.
+          */
+         it('toggles the background and text color when clicked, and clicked again', function() {
+            pending();
+         });
+    });
+
     });
 }());
