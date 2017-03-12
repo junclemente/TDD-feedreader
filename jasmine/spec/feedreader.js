@@ -30,8 +30,8 @@ $(function() {
          */
         it('and URLs are defined', function() {
             for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i]).toBeDefined();
-                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).toBeGreaterThan(0);
+                expect(allFeeds[i].url).not.toEqual('');
             }
         });
         /* Write a test that loops through each feed
@@ -148,24 +148,24 @@ $(function() {
                 done();
             });
         });
-        it('ensures that the content changes when a new feed is loaded', function(done) {
-            loadFeed(FEED2, function() {
-                feedList = $('.feed').find('.entry-link');
-                secondFeed = feedList[0].innerText;
-                expect(secondFeed).toBeDefined();
-                expect(firstFeed).not.toEqual(secondFeed);
-                done();
-            });
-        });
-        it('ensures that the content changes when a new feed is loaded', function(done) {
-            loadFeed(FEED3, function() {
-                feedList = $('.feed').find('.entry-link');
-                secondFeed = feedList[0].innerText;
-                expect(secondFeed).toBeDefined();
-                expect(firstFeed).not.toEqual(secondFeed);
-                done();
-            });
-        });
+        // it('ensures that the content changes when a new feed is loaded', function(done) {
+        //     loadFeed(FEED2, function() {
+        //         feedList = $('.feed').find('.entry-link');
+        //         secondFeed = feedList[0].innerText;
+        //         expect(secondFeed).toBeDefined();
+        //         expect(firstFeed).not.toEqual(secondFeed);
+        //         done();
+        //     });
+        // });
+        // it('ensures that the content changes when a new feed is loaded', function(done) {
+        //     loadFeed(FEED3, function() {
+        //         feedList = $('.feed').find('.entry-link');
+        //         secondFeed = feedList[0].innerText;
+        //         expect(secondFeed).toBeDefined();
+        //         expect(firstFeed).not.toEqual(secondFeed);
+        //         done();
+        //     });
+        // });
         afterAll(function() {
             jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
