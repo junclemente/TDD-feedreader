@@ -170,6 +170,7 @@ $(function() {
          it('is only possible when menu is visible', function() {
             pending();
          });
+    });
     describe('Day / Night mode', function() {
         /* TODO: Create a day / night mode so that the website checks the local time and determines the
          * day or night mode background and text colors based on the local time.
@@ -195,7 +196,5 @@ $(function() {
          it('toggles the background and text color when clicked, and clicked again', function() {
             pending();
          });
-    });
-
     });
 }());
