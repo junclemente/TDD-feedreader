@@ -37,6 +37,10 @@ $(function() {
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
+         *
+         * The last expectation uses RegEx to check that 'name' contains
+         * alphanumerics. This could be expanded in the future to test for
+         * a proper HTTP address.
          */
         it('have defined names and that name is not empty', function() {
             for (var i = 0; i < allFeeds.length; i++) {
@@ -51,6 +55,8 @@ $(function() {
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
+         *
+         * jasmine-jquery is used in this test suite
          */
         it('is hidden by default', function() {
             expect($('body')).toHaveClass('menu-hidden');
@@ -59,6 +65,11 @@ $(function() {
          * visibility when the menu icon is clicked. This test
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
+         *
+         * The following test uses a spyEvent to virtually trigger a click
+         * in the .menu-icon-link. Then, it checks if the .menu-hidden
+         * disappears from the <body>. Another click is done and checks <body>
+         * if it has .menu-hidden again.
          */
         it('changes visibility when clicked and hides when clicked again', function() {
             var spyEvent = spyOnEvent('.menu-icon-link', 'click');
@@ -79,13 +90,12 @@ $(function() {
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
+         *
+         * Asynchronous calls are being tested in the following suite.
+         * `done` is a callback that signals the testing to continue.
+         * Because of `done` in beforeEach(), the it() block will not begin
+         * until after the loadFeed(0) has completed loading.
          */
-        // The following test was used to check that async call is being performed and that
-        // the test would fail because it was not accounted for.
-        // it('should fail because not accounting for asynchrounous call', function() {
-        //    loadFeed(0);
-        //    expect($('.entry-link')).not.toBeInDOM();
-        // });
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
@@ -101,6 +111,15 @@ $(function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
+         *
+         * The following test suite tests accounts for the asynchronous nature
+         * of loadFeed().
+         * Initially, the first loadFeed() will be called and the text for the first
+         * entry will be stored at firstFeed.
+         * The second loadFeed() is called and it's first entry will be stored at secondFeed
+         * and compared to the initial first entry. These should not be equal. Additionally,
+         * to ensure that async is accounted for, it is expected that both firstFeed and secondFeed
+         * are defined.
          */
         var originalTimeout, feedList, firstFeed, secondFeed;
         var FEED0 = 0,
