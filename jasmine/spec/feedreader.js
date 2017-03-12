@@ -126,13 +126,14 @@ $(function() {
             FEED1 = 1,
             FEED2 = 2,
             FEED3 = 3;
-        beforeAll(function(done) {
+        beforeAll(function() {
             originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        });
+        beforeEach(function(done) {
             loadFeed(FEED0, function() {
                 feedList = $('.feed').find('.entry-link');
                 firstFeed = feedList[0].innerText;
-                console.log(firstFeed);
                 expect(firstFeed).toBeDefined();
                 done();
             });
@@ -141,7 +142,6 @@ $(function() {
             loadFeed(FEED1, function() {
                 feedList = $('.feed').find('.entry-link');
                 secondFeed = feedList[0].innerText;
-                console.log(secondFeed);
                 expect(secondFeed).toBeDefined();
                 expect(firstFeed).not.toEqual(secondFeed);
                 done();
@@ -151,7 +151,6 @@ $(function() {
             loadFeed(FEED2, function() {
                 feedList = $('.feed').find('.entry-link');
                 secondFeed = feedList[0].innerText;
-                console.log(secondFeed);
                 expect(secondFeed).toBeDefined();
                 expect(firstFeed).not.toEqual(secondFeed);
                 done();
@@ -161,7 +160,6 @@ $(function() {
             loadFeed(FEED3, function() {
                 feedList = $('.feed').find('.entry-link');
                 secondFeed = feedList[0].innerText;
-                console.log(secondFeed);
                 expect(secondFeed).toBeDefined();
                 expect(firstFeed).not.toEqual(secondFeed);
                 done();
