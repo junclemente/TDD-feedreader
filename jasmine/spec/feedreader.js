@@ -100,7 +100,9 @@ $(function() {
             loadFeed(0, done);
         });
         it('should have at least a single entry in entry within the feed container', function() {
-            expect($('.entry-link')).toBeInDOM();
+            var articleCheck = $('.feed').find('article');
+            expect(articleCheck).toHaveClass('entry');
+            expect(articleCheck.length).toBeGreaterThan(0);
         });
     });
     /* Write a new test suite named "New Feed Selection" */
