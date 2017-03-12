@@ -39,12 +39,12 @@ $(function() {
          * and that the name is not empty.
          *
          * The last expectation uses RegEx to check that 'name' contains
-         * alphanumerics. This could be expanded in the future to test for
-         * a proper HTTP address.
+         * alphanumerics.
          */
         it('have defined names and that name is not empty', function() {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name).not.toEqual('');
                 expect(allFeeds[i].name).toMatch(/\w/);
             }
         });
