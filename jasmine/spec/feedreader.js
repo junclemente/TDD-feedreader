@@ -182,7 +182,7 @@ $(function() {
         });
     });
     describe('Day/Night button', function() {
-        /* TODO: Create a button in the header bar that, when clicked
+        /* TODO: Create a button in the header bar that, when clicked,
          * changes the color scheme to have a dark background with
          * light colored text.
          */
